@@ -1,13 +1,13 @@
 const LandingStatus = {
-  ACTIVA: "ACTIVE",
-  BORRADOR: "DRAFT",
-  FINALIZADA: "DONE",
+  ACTIVA: "active",
+  BORRADOR: "draft",
+  FINALIZADA: "done",
 };
 
 function normalizeStatus(status) {
   if (!status) return null;
 
-  const value = status.trim().toUpperCase();
+  const value = status.trim().toLowerCase();
 
   if (Object.values(LandingStatus).includes(value)) {
     return value;
