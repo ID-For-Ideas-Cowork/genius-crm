@@ -6,6 +6,7 @@ const swaggerJsdoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
 const templateRoutes = require('./routes/templates')
 const landingRoutes = require('./routes/landings')
+const matchesRoutes = require('./routes/matches.routes')
 const errorHandler = require('./middleware/errorHandler')
 
 
@@ -13,7 +14,7 @@ const app = express()
 
 app.use(express.json())
 app.use(cors({
-  origin: '*', 
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 
@@ -91,7 +92,51 @@ const swaggerSpec = swaggerJsdoc({
           properties: {
             error: { type: 'string' }
           }
-        }
+        },
+        MatchOffer: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer', example: 1 },
+            title: { type: 'string', example: '20% OFF' },
+            discountPercentage: { type: 'integer', example: 20 },
+            active: { type: 'boolean', example: true }
+          }
+        },
+        Match: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer', example: 1 },
+            homeTeam: { type: 'string', example: 'Argentina' },
+            awayTeam: { type: 'string', example: 'Brasil' },
+            matchDate: {
+              type: 'string',
+              format: 'date-time',
+              example: '2026-06-15T21:00:00.000Z'
+            },
+            stage: {
+              type: 'string',
+              example: 'GROUP_STAGE'
+            },
+            status: {
+              type: 'string',
+              example: 'SCHEDULED'
+            },
+            landingId: {
+              type: 'integer',
+              example: 2
+            },
+            hasActiveOffer: {
+              type: 'boolean',
+              example: true
+            },
+            offer: {
+              oneOf: [
+                { $ref: '#/components/schemas/MatchOffer' },
+                { type: 'null' }
+              ]
+            }
+          }
+        },
       }
     }
   },
@@ -103,7 +148,7 @@ app.get('/openapi.json', (req, res) => res.json(swaggerSpec))
 
 app.use('/api/templates', templateRoutes)
 app.use('/api/landings', landingRoutes)
-
+app.use('/api/matches', matchesRoutes)
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 3000

@@ -1,6 +1,7 @@
 const db = {
   nextLandingId: 5,
   nextLeadId: 4,
+  //landing existentes 
   landings: [
      {
       id: 1,
@@ -113,6 +114,7 @@ const db = {
       createdAt: '2026-04-12T11:00:00.000Z'
     }
   ],
+  //leads asociados a la landing
   leads: [
     {
       id: 1,
@@ -141,7 +143,53 @@ const db = {
       message: null,
       createdAt: '2026-04-12T08:30:00.000Z'
     }
-  ]
+  ],
+  // Match Sales
+  matches: [
+   {
+      id: 1,
+      homeTeam: 'Argentina',
+      awayTeam: 'Argelia',
+      matchDate: '2026-06-16T22:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: {
+         id: 1,
+         title: '30% OFF',
+         discountPercentage: 30,
+         active: true
+      }
+   },
+   {
+      id: 2,
+      homeTeam: 'Argentina',
+      awayTeam: 'Austria',
+      matchDate: '2026-06-22T14:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: {
+         id: 1,
+         title: '20% OFF',
+         discountPercentage: 20,
+         active: true
+      }
+   },
+   {
+      id: 3,
+      homeTeam: 'Argentina',
+      awayTeam: 'Jordania',
+      matchDate: '2026-06-27T23:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: null
+   }
+]
 }
 
 module.exports = db
