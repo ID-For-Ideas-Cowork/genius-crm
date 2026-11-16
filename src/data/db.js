@@ -1,9 +1,58 @@
 const db = {
   nextLandingId: 5,
   nextLeadId: 4,
+  //landing existentes 
   landings: [
-    {
+     {
       id: 1,
+      templateId: 1,
+      name: 'Landing Dia de la Madre - SuenoSimple',
+      client: 'SuenoSimple',
+      status: 'active',
+      fields: {
+        title: 'Dia de la Madre',
+        subtitle: 'Linea economica Pro',
+        ctaText: 'Comprar ahora',
+        ctaUrl: 'https://suenosimple.com/dia-de-la-madre',
+        eventDate: '2026-10-18',
+        heroImageUrl: 'https://via.placeholder.com/1200x400'
+      },
+      createdAt: '2026-04-29T19:00:00.000Z'
+    },
+    {
+      id: 2,
+      templateId: 3,
+      name: 'Landing Mundial 2026 - SuenoSimple',
+      client: 'SuenoSimple',
+      status: 'active',
+      fields: {
+        title: 'Mundial 2026',
+        subtitle: 'Acceso a ofertas relampago',
+        ctaText: 'Quiero mi descuento mundial',
+        ctaUrl: 'https://suenosimple.com/mundial-2026',
+        eventDate: '2026-06-11',
+        heroImageUrl: 'https://via.placeholder.com/1200x400'
+      },
+      createdAt: '2026-04-29T19:00:00.000Z'
+    },
+    {
+      id: 3,
+      templateId: 1,
+      name: 'Landing Dia del Trabajador - SuenoSimple',
+      client: 'SuenoSimple',
+      status: 'active',
+      fields: {
+        title: 'Dia del trabajador',
+        subtitle: 'Hasta 50% off en colchones',
+        ctaText: 'Ver colchones',
+        ctaUrl: 'https://suenosimple.com/dia-del-trabajador',
+        eventDate: '2026-05-01',
+        heroImageUrl: 'https://via.placeholder.com/1200x400'
+      },
+      createdAt: '2026-04-29T19:00:00.000Z'
+    },
+    {
+      id: 4,
       templateId: 1,
       name: 'Hot Sale 2026 - SuenoSimple',
       client: 'SuenoSimple',
@@ -19,7 +68,7 @@ const db = {
       createdAt: '2026-04-01T10:00:00.000Z'
     },
     {
-      id: 2,
+      id: 5,
       templateId: 2,
       name: 'Lanzamiento Economica Pro 2026',
       client: 'SuenoSimple',
@@ -35,7 +84,7 @@ const db = {
       createdAt: '2026-03-15T09:00:00.000Z'
     },
     {
-      id: 3,
+      id: 6,
       templateId: 3,
       name: 'Captacion leads - Newsletter SuenoSimple',
       client: 'SuenoSimple',
@@ -49,7 +98,7 @@ const db = {
       createdAt: '2026-04-10T14:00:00.000Z'
     },
     {
-      id: 4,
+      id: 7,
       templateId: 1,
       name: 'Black Friday 2026 - TechStore',
       client: 'TechStore',
@@ -65,6 +114,7 @@ const db = {
       createdAt: '2026-04-12T11:00:00.000Z'
     }
   ],
+  //leads asociados a la landing
   leads: [
     {
       id: 1,
@@ -93,7 +143,53 @@ const db = {
       message: null,
       createdAt: '2026-04-12T08:30:00.000Z'
     }
-  ]
+  ],
+  // Match Sales
+  matches: [
+   {
+      id: 1,
+      homeTeam: 'Argentina',
+      awayTeam: 'Argelia',
+      matchDate: '2026-06-16T22:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: {
+         id: 1,
+         title: '30% OFF',
+         discountPercentage: 30,
+         active: true
+      }
+   },
+   {
+      id: 2,
+      homeTeam: 'Argentina',
+      awayTeam: 'Austria',
+      matchDate: '2026-06-22T14:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: {
+         id: 1,
+         title: '20% OFF',
+         discountPercentage: 20,
+         active: true
+      }
+   },
+   {
+      id: 3,
+      homeTeam: 'Argentina',
+      awayTeam: 'Jordania',
+      matchDate: '2026-06-27T23:00:00.000Z',
+      stage: 'GROUP_STAGE',
+      status: 'SCHEDULED',
+      landingId: 2,
+
+      offer: null
+   }
+]
 }
 
 module.exports = db
